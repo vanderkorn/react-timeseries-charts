@@ -61,8 +61,7 @@ export default class EventHandler extends React.Component {
 
         e.preventDefault();
 
-        const SCALE_FACTOR = 0.001;
-        let scale = 1 + e.deltaY * SCALE_FACTOR;
+        let scale = 1 + e.deltaY * this.props.scaleFactor;
         if (scale > 3) {
             scale = 3;
         }
@@ -323,10 +322,12 @@ EventHandler.propTypes = {
     onZoom: PropTypes.func,
     onMouseMove: PropTypes.func,
     onMouseOut: PropTypes.func,
-    onMouseClick: PropTypes.func
+    onMouseClick: PropTypes.func,
+    scaleFactor: PropTypes.number
 };
 
 EventHandler.defaultProps = {
     enablePanZoom: false,
-    enableDragZoom: false
+    enableDragZoom: false,
+    scaleFactor: 0.001
 };

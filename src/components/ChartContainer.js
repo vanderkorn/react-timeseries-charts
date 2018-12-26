@@ -327,7 +327,6 @@ export default class ChartContainer extends React.Component {
                     timeFormat: this.props.format,
                     trackerShowTime: firstRow,
                     trackerTime: this.props.trackerPosition,
-                    trackerTimeFormat: this.props.format,
                     trackerStyle: trackerStyle,
                     onTimeRangeChanged: this.handleTimeRangeChanged,
                     onTrackerChanged: this.handleTrackerChanged
@@ -441,6 +440,7 @@ export default class ChartContainer extends React.Component {
                     onMouseMove={this.handleMouseMove}
                     onMouseClick={this.handleBackgroundClick}
                     onZoom={this.handleZoom}
+                    scaleFactor={this.props.scaleFactor}
                 >
                     {chartRows}
                 </EventHandler>
@@ -739,7 +739,9 @@ ChartContainer.propTypes = {
     /**
      * Prop to hide time axis if required
      */
-    hideTimeAxis: PropTypes.bool
+    hideTimeAxis: PropTypes.bool,
+
+    scaleFactor: PropTypes.number
 };
 
 ChartContainer.defaultProps = {
@@ -753,5 +755,6 @@ ChartContainer.defaultProps = {
     timeAxisStyle: defaultTimeAxisStyle,
     titleStyle: defaultTitleStyle,
     trackerStyle: defaultTrackerStyle,
-    hideTimeAxis: false
+    hideTimeAxis: false,
+    scaleFactor: 0.001
 };
